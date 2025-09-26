@@ -1,3 +1,6 @@
+import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
+
 /**
  * A simple console-based Tic-Tac-Toe game.
  * Supports a human player vs a computer opponent.
@@ -108,5 +111,35 @@ public class TicTacToe {
 			default:
 				return false;
 		}
+	}
+
+	/**
+     * Handles the human player's move by prompting for input until a valid move is made.
+     *
+     * @param board   3x3 character array representing the board
+     * @param scanner Scanner object for reading user input
+     * @throws InterruptedException if thread sleep is interrupted
+     */
+	private static void playerMove(char[][] board, Scanner scanner) throws InterruptedException
+	{	
+		String userInput;
+		while (true)
+		{
+			System.out.print ("Where would you like to play?(0-9): ");
+			
+			userInput = scanner.nextLine();
+			
+			if (isValidMove(board, userInput))
+			{
+				break;
+			}
+			
+			System.out.println ("Invalid Move! Please try another move.");
+			
+			TimeUnit.MILLISECONDS.sleep (2000);
+		}
+		
+		
+		placeMove(board, userInput, 'x');
 	}
 }
