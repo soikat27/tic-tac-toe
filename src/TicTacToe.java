@@ -180,4 +180,52 @@ public class TicTacToe {
 		
 		placeMove (board, computerInput, 'o');
 	}
+
+	/**
+     * Checks if the game board is completely filled with no empty spaces.
+     *
+     * @param board 3x3 character array representing the board
+     * @return true if the board is full (tie), false otherwise
+     */
+	private static boolean isTie (char[][] board)
+	{
+		for (int i = 0; i < board.length; i++)
+		{
+			for (int j = 0; j < board[i].length; j++)
+			{
+				if (board[i][j] == ' ')
+				{
+					return false;
+				}
+			}
+		}
+		
+		return true;
+	}
+
+	/**
+     * Checks if a given symbol has won the game.
+     *
+     * @param board  3x3 character array representing the board
+     * @param symbol 'x' or 'o' symbol to check
+     * @return true if the symbol has a winning combination, false otherwise
+     */
+	private static boolean isWin (char[][] board, char symbol)
+	{
+		if (board[0][0] == symbol && board[0][1] == symbol && board[0][2] == symbol ||
+			board[1][0] == symbol && board[1][1] == symbol && board[1][2] == symbol ||
+			board[2][0] == symbol && board[2][1] == symbol && board[2][2] == symbol ||
+			
+			board[0][0] == symbol && board[1][0] == symbol && board[2][0] == symbol ||
+			board[0][1] == symbol && board[1][1] == symbol && board[2][1] == symbol ||
+			board[0][2] == symbol && board[1][2] == symbol && board[2][2] == symbol ||
+			
+			board[0][0] == symbol && board[1][1] == symbol && board[2][2] == symbol ||
+			board[0][2] == symbol && board[1][1] == symbol && board[2][0] == symbol)
+		{
+			return true;
+		}
+		
+		return false;
+	}
 }
