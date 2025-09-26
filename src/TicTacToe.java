@@ -228,4 +228,37 @@ public class TicTacToe {
 		
 		return false;
 	}
+
+	/**
+     * Checks if a given symbol has won the game.
+     *
+     * @param board  3x3 character array representing the board
+     * @param symbol 'x' or 'o' symbol to check
+     * @return true if the symbol has a winning combination, false otherwise
+     */
+	private static boolean isGameOver(char[][] board) 
+	{
+		char playerSymbol = 'x';
+		char computerSymbol = 'o';
+		
+		if (isTie(board))
+		{
+			System.out.println("The game ended in a tie!");
+			return true;
+		}
+		
+		else if (isWin(board, playerSymbol))
+		{
+			System.out.println("You Won!");
+			return true;
+		}
+		
+		else if (isWin(board, computerSymbol))
+		{
+			System.out.println("Computer Won!");
+			return true;
+		}
+		
+		return false;
+	}
 }
