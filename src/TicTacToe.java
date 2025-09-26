@@ -3,8 +3,18 @@ import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
 /**
- * A simple console-based Tic-Tac-Toe game.
- * Supports a human player vs a computer opponent.
+ * TicTacToe game with a command-line interface.
+ * <p>
+ * Player symbol: X<br>
+ * Computer symbol: O<br>
+ * Board positions: 1-9 as shown below:<br>
+ * 1 | 2 | 3<br>
+ * - + - + -<br>
+ * 4 | 5 | 6<br>
+ * - + - + -<br>
+ * 7 | 8 | 9
+ * </p>
+ * Supports checking for wins, ties, and validating moves.
  */
 public class TicTacToe {
     
