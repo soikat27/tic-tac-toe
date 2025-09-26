@@ -13,14 +13,36 @@ public class TicTacToe {
      * Initializes the board and alternates moves between player and computer.
      *
      * @param args Command-line arguments (not used)
+	 * @throws InterruptedException if thread sleep is interrupted
      */
-	public static void main(String[] args)
+	public static void main(String[] args) throws InterruptedException
 	{
         char[][] board = {{' ', ' ', ' '}, 
 				    	  {' ', ' ', ' '}, 
 				    	  {' ', ' ', ' '}};
 		
 		printBoard(board);
+		
+		Scanner scanner = new Scanner (System.in);
+		
+		while (true)
+		{
+			playerMove(board, scanner);
+			printBoard(board);
+			if (isGameOver(board))
+			{
+				break;
+			}
+			
+			computerMove(board);
+			printBoard(board);
+			if (isGameOver(board))
+			{
+				break;
+			}
+		}
+		
+		scanner.close();
 	}
 
 	/**
