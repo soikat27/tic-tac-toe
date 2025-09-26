@@ -1,3 +1,4 @@
+import java.util.Random;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
@@ -141,5 +142,42 @@ public class TicTacToe {
 		
 		
 		placeMove(board, userInput, 'x');
+	}
+
+	/**
+     * Handles the computer's move by selecting a random valid position.
+     *
+     * @param board 3x3 character array representing the board
+     * @throws InterruptedException if thread sleep is interrupted
+     */
+	private static void computerMove(char[][] board) throws InterruptedException 
+	{
+		String message = "Computer is thinking";
+		
+		for (int i = 0; i < 4; i++)
+		{
+			System.out.print (message + "\r");
+			
+			message += ".";
+			
+			TimeUnit.MILLISECONDS.sleep(500);
+		}
+		
+		String computerInput;
+		Random random = new Random ();
+		
+		while (true)
+		{
+			computerInput = Integer.toString(random.nextInt(9) + 1);
+			
+			if (isValidMove (board, computerInput))
+			{
+				break;
+			}
+		}
+		
+		System.out.println ("\rComputer moved: " + computerInput + "      ");
+		
+		placeMove (board, computerInput, 'o');
 	}
 }
